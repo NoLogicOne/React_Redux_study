@@ -25525,7 +25525,7 @@ var ColorPicker = function (_Component) {
 	_createClass(ColorPicker, [{
 		key: "sendColor",
 		value: function sendColor(title, color) {
-			console.log("new color" + title + " - " + color);
+			console.log("new color!" + title + " - " + color);
 		}
 	}, {
 		key: "render",

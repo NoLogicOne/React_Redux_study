@@ -10,7 +10,7 @@ export default class ColorPicker extends Component {
 	}
 
 	sendColor(title, color){
-		console.log("new color" + title + " - " + color);
+		console.log("new color!" + title + " - " + color);
 	}
 
 	render() {
