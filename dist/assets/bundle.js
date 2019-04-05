@@ -86,6 +86,21 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/StarRating/Star.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/StarRating/Star.scss ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".picker__star {\n  cursor: pointer;\n  height: 25px;\n  width: 25px;\n  margin: 2px;\n  display: inline-block;\n  background-color: grey; }\n\n.active {\n  background-color: red; }\n", ""]);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/modules/menu.scss":
 /*!**************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/modules/menu.scss ***!
@@ -25423,10 +25438,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/ColorForm/ColorForm.js":
-/*!************************************!*\
-  !*** ./src/ColorForm/ColorForm.js ***!
-  \************************************/
+/***/ "./src/StarRating/Star.js":
+/*!********************************!*\
+  !*** ./src/StarRating/Star.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25441,48 +25456,54 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ./Star.scss */ "./src/StarRating/Star.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ColorForm = function ColorForm(_ref) {
-	var sendColor = _ref.sendColor;
+var Star = function Star(_ref) {
+	var light = _ref.light;
 
-	var _color = void 0,
-	    _title = void 0;
-
-	var submit = function submit(e) {
-		e.preventDefault();
-		sendColor(_title.value, _color.value);
-		_color.value = "#ff0000";
-		_title.value = "";
-		_title.focus();
-	};
-
-	return _react2.default.createElement(
-		"form",
-		{ onSubmit: submit },
-		_react2.default.createElement("input", { ref: function ref(input) {
-				return _title = input;
-			},
-			type: "text",
-			placeholder: "color name",
-			required: true }),
-		_react2.default.createElement("input", { ref: function ref(input) {
-				return _color = input;
-			},
-			type: "color",
-			required: true }),
-		_react2.default.createElement("input", { type: "submit" })
-	);
+	return _react2.default.createElement("div", { className: "picker__star" + (light ? " active" : "") });
 };
 
-exports.default = ColorForm;
+exports.default = Star;
 
 /***/ }),
 
-/***/ "./src/ColorPicker.js":
-/*!****************************!*\
-  !*** ./src/ColorPicker.js ***!
-  \****************************/
+/***/ "./src/StarRating/Star.scss":
+/*!**********************************!*\
+  !*** ./src/StarRating/Star.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/lib/loader.js!./Star.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/StarRating/Star.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/StarRating/StarRating.js":
+/*!**************************************!*\
+  !*** ./src/StarRating/StarRating.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25493,55 +25514,38 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ColorForm = __webpack_require__(/*! ./ColorForm/ColorForm.js */ "./src/ColorForm/ColorForm.js");
+var _Star = __webpack_require__(/*! ./Star.js */ "./src/StarRating/Star.js");
 
-var _ColorForm2 = _interopRequireDefault(_ColorForm);
+var _Star2 = _interopRequireDefault(_Star);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+var StarRating = function StarRating(_ref) {
+	var _ref$value = _ref.value,
+	    value = _ref$value === undefined ? 3 : _ref$value;
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ColorPicker = function (_Component) {
-	_inherits(ColorPicker, _Component);
+	var createStars = function createStars() {
+		return [].concat(_toConsumableArray(Array(5))).map(function (curr, i) {
+			return _react2.default.createElement(_Star2.default, { key: i,
+				light: value > i });
+		});
+	};
 
-	function ColorPicker(props) {
-		_classCallCheck(this, ColorPicker);
+	return _react2.default.createElement(
+		"div",
+		{ className: "picker__rating" },
+		createStars()
+	);
+};
 
-		return _possibleConstructorReturn(this, (ColorPicker.__proto__ || Object.getPrototypeOf(ColorPicker)).call(this, props));
-
-		// this.submit = this.submit.bind(this);
-	}
-
-	_createClass(ColorPicker, [{
-		key: "sendColor",
-		value: function sendColor(title, color) {
-			console.log("new color!" + title + " - " + color);
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			return _react2.default.createElement(
-				"div",
-				{ id: "colors__wrapper" },
-				_react2.default.createElement(_ColorForm2.default, { sendColor: this.sendColor })
-			);
-		}
-	}]);
-
-	return ColorPicker;
-}(_react.Component);
-
-exports.default = ColorPicker;
+exports.default = StarRating;
 
 /***/ }),
 
@@ -25596,16 +25600,23 @@ var _recipes = __webpack_require__(/*! ./data/recipes.js */ "./src/data/recipes.
 
 var _recipes2 = _interopRequireDefault(_recipes);
 
-var _ColorPicker = __webpack_require__(/*! ./ColorPicker.js */ "./src/ColorPicker.js");
+var _StarRating = __webpack_require__(/*! ./StarRating/StarRating.js */ "./src/StarRating/StarRating.js");
 
-var _ColorPicker2 = _interopRequireDefault(_ColorPicker);
+var _StarRating2 = _interopRequireDefault(_StarRating);
+
+var _Star = __webpack_require__(/*! ./StarRating/Star.js */ "./src/StarRating/Star.js");
+
+var _Star2 = _interopRequireDefault(_Star);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import Summary from "./modules/modules/Summary.js";
+// {render(<Menu recipes={data} title="Delicous Recipes" />, }
 
-{/*render(<Menu recipes={data} title="Delicous Recipes" />, */}
-(0, _reactDom.render)(_react2.default.createElement(_ColorPicker2.default, null), document.getElementById('react-container'));
+// import ColorPicker from "./ColorPicker.js";
+// import Summary from "./modules/modules/Summary.js";
+(0, _reactDom.render)(_react2.default.createElement(_StarRating2.default, null), document.getElementById('react-container'));
+// render(<Star/>,
+// 	   document.getElementById('react-container'))
 
 /***/ }),
 

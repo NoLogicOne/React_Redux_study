@@ -17,6 +17,7 @@ export default class ColorPicker extends Component {
 		return (
 			<div id="colors__wrapper">
 				<ColorForm sendColor={this.sendColor} />
+
 			</div>
 		)
 	}
