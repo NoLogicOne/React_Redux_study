@@ -86,31 +86,16 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/StarRating/Star.scss":
-/*!*****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/StarRating/Star.scss ***!
-  \*****************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/StarRating/Star.scss":
+/*!********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/StarRating/Star.scss ***!
+  \********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
 exports.push([module.i, ".picker__star {\n  cursor: pointer;\n  height: 25px;\n  width: 25px;\n  margin: 2px;\n  display: inline-block;\n  background-color: grey; }\n\n.active {\n  background-color: red; }\n", ""]);
-
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/modules/menu.scss":
-/*!**************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/modules/menu.scss ***!
-  \**************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
-// Module
-exports.push([module.i, ".menu__main {\n  text-align: center;\n  color: grey; }\n  .menu__main li {\n    list-style-type: none; }\n", ""]);
 
 
 
@@ -25438,10 +25423,81 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/StarRating/Star.js":
-/*!********************************!*\
-  !*** ./src/StarRating/Star.js ***!
-  \********************************/
+/***/ "./src/App/App.js":
+/*!************************!*\
+  !*** ./src/App/App.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ColorForm = __webpack_require__(/*! ./ColorForm/ColorForm.js */ "./src/App/ColorForm/ColorForm.js");
+
+var _ColorForm2 = _interopRequireDefault(_ColorForm);
+
+var _ColorsInfo = __webpack_require__(/*! ./ColorsInfo/ColorsInfo.js */ "./src/App/ColorsInfo/ColorsInfo.js");
+
+var _ColorsInfo2 = _interopRequireDefault(_ColorsInfo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import StarRating from "./StarRating/StarRating.js";
+
+
+var App = function (_Component) {
+	_inherits(App, _Component);
+
+	function App(props) {
+		_classCallCheck(this, App);
+
+		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	}
+
+	_createClass(App, [{
+		key: "sendColor",
+		value: function sendColor(title, color) {
+			console.log("new color!" + title + " - " + color);
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			return _react2.default.createElement(
+				"div",
+				{ id: "colors__wrapper" },
+				_react2.default.createElement(_ColorForm2.default, { sendColor: this.sendColor }),
+				_react2.default.createElement(_ColorsInfo2.default, null)
+			);
+		}
+	}]);
+
+	return App;
+}(_react.Component);
+
+exports.default = App;
+
+/***/ }),
+
+/***/ "./src/App/ColorForm/ColorForm.js":
+/*!****************************************!*\
+  !*** ./src/App/ColorForm/ColorForm.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25456,7 +25512,135 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(/*! ./Star.scss */ "./src/StarRating/Star.scss");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ColorForm = function ColorForm(_ref) {
+	var sendColor = _ref.sendColor;
+
+	var _color = void 0,
+	    _title = void 0;
+
+	var submit = function submit(e) {
+		e.preventDefault();
+		sendColor(_title.value, _color.value);
+		_color.value = "#ff0000";
+		_title.value = "";
+		_title.focus();
+	};
+
+	return _react2.default.createElement(
+		"form",
+		{ onSubmit: submit },
+		_react2.default.createElement("input", { ref: function ref(input) {
+				return _title = input;
+			},
+			type: "text",
+			placeholder: "color name",
+			required: true }),
+		_react2.default.createElement("input", { ref: function ref(input) {
+				return _color = input;
+			},
+			type: "color",
+			required: true }),
+		_react2.default.createElement("input", { type: "submit" })
+	);
+};
+
+exports.default = ColorForm;
+
+/***/ }),
+
+/***/ "./src/App/ColorsInfo/ColorInfo.js":
+/*!*****************************************!*\
+  !*** ./src/App/ColorsInfo/ColorInfo.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _StarRating = __webpack_require__(/*! ./StarRating/StarRating.js */ "./src/App/ColorsInfo/StarRating/StarRating.js");
+
+var _StarRating2 = _interopRequireDefault(_StarRating);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ColorInfo = function ColorInfo() {
+	return _react2.default.createElement(
+		"div",
+		{ className: "picker__color-info" },
+		_react2.default.createElement(_StarRating2.default, null)
+	);
+};
+
+exports.default = ColorInfo;
+
+/***/ }),
+
+/***/ "./src/App/ColorsInfo/ColorsInfo.js":
+/*!******************************************!*\
+  !*** ./src/App/ColorsInfo/ColorsInfo.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ColorInfo = __webpack_require__(/*! ./ColorInfo.js */ "./src/App/ColorsInfo/ColorInfo.js");
+
+var _ColorInfo2 = _interopRequireDefault(_ColorInfo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ColorsInfo = function ColorsInfo() {
+	return _react2.default.createElement(
+		"div",
+		{ className: "picker__colors-info" },
+		_react2.default.createElement(_ColorInfo2.default, null)
+	);
+};
+
+exports.default = ColorsInfo;
+
+/***/ }),
+
+/***/ "./src/App/ColorsInfo/StarRating/Star.js":
+/*!***********************************************!*\
+  !*** ./src/App/ColorsInfo/StarRating/Star.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ./Star.scss */ "./src/App/ColorsInfo/StarRating/Star.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25470,15 +25654,15 @@ exports.default = Star;
 
 /***/ }),
 
-/***/ "./src/StarRating/Star.scss":
-/*!**********************************!*\
-  !*** ./src/StarRating/Star.scss ***!
-  \**********************************/
+/***/ "./src/App/ColorsInfo/StarRating/Star.scss":
+/*!*************************************************!*\
+  !*** ./src/App/ColorsInfo/StarRating/Star.scss ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/lib/loader.js!./Star.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/StarRating/Star.scss");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/lib/loader.js!./Star.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/StarRating/Star.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -25492,7 +25676,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -25500,10 +25684,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./src/StarRating/StarRating.js":
-/*!**************************************!*\
-  !*** ./src/StarRating/StarRating.js ***!
-  \**************************************/
+/***/ "./src/App/ColorsInfo/StarRating/StarRating.js":
+/*!*****************************************************!*\
+  !*** ./src/App/ColorsInfo/StarRating/StarRating.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25518,7 +25702,7 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Star = __webpack_require__(/*! ./Star.js */ "./src/StarRating/Star.js");
+var _Star = __webpack_require__(/*! ./Star.js */ "./src/App/ColorsInfo/StarRating/Star.js");
 
 var _Star2 = _interopRequireDefault(_Star);
 
@@ -25592,362 +25776,17 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
-var _Menu = __webpack_require__(/*! ./modules/Menu.js */ "./src/modules/Menu.js");
-
-var _Menu2 = _interopRequireDefault(_Menu);
-
 var _recipes = __webpack_require__(/*! ./data/recipes.js */ "./src/data/recipes.js");
 
 var _recipes2 = _interopRequireDefault(_recipes);
 
-var _StarRating = __webpack_require__(/*! ./StarRating/StarRating.js */ "./src/StarRating/StarRating.js");
+var _App = __webpack_require__(/*! ./App/App.js */ "./src/App/App.js");
 
-var _StarRating2 = _interopRequireDefault(_StarRating);
-
-var _Star = __webpack_require__(/*! ./StarRating/Star.js */ "./src/StarRating/Star.js");
-
-var _Star2 = _interopRequireDefault(_Star);
+var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// {render(<Menu recipes={data} title="Delicous Recipes" />, }
-
-// import ColorPicker from "./ColorPicker.js";
-// import Summary from "./modules/modules/Summary.js";
-(0, _reactDom.render)(_react2.default.createElement(_StarRating2.default, null), document.getElementById('react-container'));
-// render(<Star/>,
-// 	   document.getElementById('react-container'))
-
-/***/ }),
-
-/***/ "./src/modules/Menu.js":
-/*!*****************************!*\
-  !*** ./src/modules/Menu.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Recipe = __webpack_require__(/*! ./Recipe.js */ "./src/modules/Recipe.js");
-
-var _Recipe2 = _interopRequireDefault(_Recipe);
-
-__webpack_require__(/*! ./menu.scss */ "./src/modules/menu.scss");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Menu = function Menu(_ref) {
-	var title = _ref.title,
-	    recipes = _ref.recipes;
-	return _react2.default.createElement(
-		'article',
-		{ className: 'menu__main' },
-		_react2.default.createElement(
-			'header',
-			null,
-			_react2.default.createElement(
-				'h2',
-				null,
-				title
-			)
-		),
-		_react2.default.createElement(
-			'div',
-			{ className: 'recipes' },
-			recipes.map(function (recipe, i) {
-				return _react2.default.createElement(_Recipe2.default, _extends({ key: i }, recipe));
-			})
-		)
-	);
-};
-
-exports.default = Menu;
-
-/***/ }),
-
-/***/ "./src/modules/Recipe.js":
-/*!*******************************!*\
-  !*** ./src/modules/Recipe.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Summary = __webpack_require__(/*! ./modules/Summary.js */ "./src/modules/modules/Summary.js");
-
-var _Summary2 = _interopRequireDefault(_Summary);
-
-var _Ingridient = __webpack_require__(/*! ./modules/Ingridient.js */ "./src/modules/modules/Ingridient.js");
-
-var _Ingridient2 = _interopRequireDefault(_Ingridient);
-
-var _Instructions = __webpack_require__(/*! ./modules/Instructions.js */ "./src/modules/modules/Instructions.js");
-
-var _Instructions2 = _interopRequireDefault(_Instructions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Recipe = function Recipe(_ref) {
-	var name = _ref.name,
-	    ingredients = _ref.ingredients,
-	    steps = _ref.steps;
-	return _react2.default.createElement(
-		"section",
-		{ id: name.toLowerCase().replace(/\s/g, "-") },
-		_react2.default.createElement(_Summary2.default, { name: name,
-			ingredients: ingredients.length,
-			steps: steps.length }),
-		_react2.default.createElement(
-			"h3",
-			null,
-			name
-		),
-		_react2.default.createElement(
-			"ul",
-			null,
-			ingredients.map(function (ingridient, i) {
-				return _react2.default.createElement(_Ingridient2.default, _extends({ key: i
-				}, ingridient));
-			})
-		),
-		_react2.default.createElement(_Instructions2.default, { steps: steps })
-	);
-};
-
-exports.default = Recipe;
-
-/***/ }),
-
-/***/ "./src/modules/menu.scss":
-/*!*******************************!*\
-  !*** ./src/modules/menu.scss ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/lib/loader.js!./menu.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/modules/menu.scss");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./src/modules/modules/Ingridient.js":
-/*!*******************************************!*\
-  !*** ./src/modules/modules/Ingridient.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Ingridient = function Ingridient(_ref) {
-	var amount = _ref.amount,
-	    measurement = _ref.measurement,
-	    name = _ref.name;
-	return _react2.default.createElement(
-		"li",
-		null,
-		_react2.default.createElement(
-			"span",
-			{ className: "amount" },
-			amount + " "
-		),
-		_react2.default.createElement(
-			"span",
-			{ className: "measurement" },
-			measurement + " "
-		),
-		_react2.default.createElement(
-			"span",
-			{ className: "name" },
-			name
-		)
-	);
-};
-
-exports.default = Ingridient;
-
-/***/ }),
-
-/***/ "./src/modules/modules/Instructions.js":
-/*!*********************************************!*\
-  !*** ./src/modules/modules/Instructions.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Instructions = function Instructions(_ref) {
-	var steps = _ref.steps;
-	return _react2.default.createElement(
-		"div",
-		{ className: "instructions" },
-		_react2.default.createElement(
-			"h3",
-			null,
-			"Cooking instructions"
-		),
-		_react2.default.createElement(
-			"div",
-			null,
-			steps.map(function (step, i) {
-				return _react2.default.createElement(
-					"p",
-					{ key: i },
-					step
-				);
-			})
-		)
-	);
-};
-
-exports.default = Instructions;
-
-/***/ }),
-
-/***/ "./src/modules/modules/Summary.js":
-/*!****************************************!*\
-  !*** ./src/modules/modules/Summary.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Summary = function (_Component) {
-	_inherits(Summary, _Component);
-
-	function Summary() {
-		_classCallCheck(this, Summary);
-
-		return _possibleConstructorReturn(this, (Summary.__proto__ || Object.getPrototypeOf(Summary)).apply(this, arguments));
-	}
-
-	_createClass(Summary, [{
-		key: "render",
-		value: function render() {
-			var _props = this.props,
-			    ingredients = _props.ingredients,
-			    name = _props.name,
-			    steps = _props.steps;
-
-			return _react2.default.createElement(
-				"div",
-				{ className: "menu__summary" },
-				_react2.default.createElement(
-					"h4",
-					null,
-					name
-				),
-				_react2.default.createElement(
-					"span",
-					{ className: "menu__summary_ingridients" },
-					ingredients,
-					" ingredients"
-				),
-				" |",
-				_react2.default.createElement(
-					"span",
-					{ className: "menu__summary_steps" },
-					" " + steps,
-					" steps"
-				)
-			);
-		}
-	}]);
-
-	return Summary;
-}(_react.Component);
-
-Summary.defaultProps = {
-	ingredients: 0,
-	steps: 0,
-	name: "[recipe]"
-};
-exports.default = Summary;
+(0, _reactDom.render)(_react2.default.createElement(_App2.default, null), document.getElementById('react-container'));
 
 /***/ })
 
