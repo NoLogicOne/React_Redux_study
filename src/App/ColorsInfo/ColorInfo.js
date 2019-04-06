@@ -17,7 +17,9 @@ const ColorInfo = ({color = "#00ff00",
 	
 	return (
 		<div className="picker__color-info">
-			<h2>{name}</h2>
+			<h2>{name}
+				<span>&#10006;</span>
+			</h2>
 			<div className="picker__color"
 				 style={colorStyles} />
 			<StarRating value={rating}

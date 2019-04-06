@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  height: 50px;\n  margin: 20px; }\n  input[type=\"color\"] {\n    width: 50px;\n    padding: 0; }\n", ""]);
+exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  margin: 20px;\n  display: inline-block; }\n  input[type=\"color\"] {\n    margin: 0;\n    border-radius: 50%;\n    cursor: pointer;\n    border: none;\n    background-color: transparent; }\n  input[type=\"text\"] {\n    font-size: 18px; }\n\n.picker__form_color {\n  border-radius: 50%;\n  height: 100%;\n  position: static;\n  margin-bottom: -25px; }\n  .picker__form_color:after {\n    content: \"\\263B\";\n    width: 50px;\n    height: 50px;\n    font-size: 18px; }\n", ""]);
 
 
 
@@ -110,7 +110,7 @@ exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  height: 50px;\n  
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".picker__color-info {\n  width: 200px;\n  height: 200px;\n  text-align: center;\n  display: inline-block;\n  margin: 1em; }\n  .picker__color-info h2 {\n    text-align: left; }\n\n.picker__color {\n  width: 100%;\n  height: 50%;\n  border: 1px solid grey; }\n", ""]);
+exports.push([module.i, ".picker__color-info {\n  width: 200px;\n  height: 200px;\n  text-align: center;\n  display: inline-block;\n  margin: 1em; }\n  .picker__color-info h2 {\n    text-align: left; }\n  .picker__color-info span {\n    border: 1px solid grey;\n    padding: 5px;\n    float: right;\n    display: inline-block;\n    cursor: pointer; }\n\n.picker__color {\n  width: 100%;\n  height: 50%;\n  border: 1px solid grey; }\n", ""]);
 
 
 
@@ -125,7 +125,7 @@ exports.push([module.i, ".picker__color-info {\n  width: 200px;\n  height: 200px
 
 exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".picker__star {\n  cursor: pointer;\n  height: 25px;\n  width: 25px;\n  margin: 2px;\n  display: inline-block;\n  background-color: grey; }\n\n.active {\n  background-color: red; }\n", ""]);
+exports.push([module.i, ".picker__star {\n  cursor: pointer;\n  margin: 2px;\n  display: inline-block;\n  color: grey;\n  font-size: 2em; }\n  .picker__star:after {\n    content: \"\\272F\"; }\n\n.active {\n  color: red; }\n", ""]);
 
 
 
@@ -25623,23 +25623,35 @@ var ColorForm = function ColorForm(_ref) {
 	return _react2.default.createElement(
 		"form",
 		{ onSubmit: submit },
-		_react2.default.createElement("input", { ref: function ref(input) {
-				return _title = input;
-			},
-			type: "text",
-			placeholder: "color name",
-			required: true }),
-		_react2.default.createElement("input", { ref: function ref(input) {
-				return _color = input;
-			},
-			type: "color",
-			required: true }),
-		_react2.default.createElement("input", { ref: function ref(input) {
-				return _rating = input;
-			},
-			type: "number",
-			required: true }),
-		_react2.default.createElement("input", { type: "submit" })
+		_react2.default.createElement(
+			"label",
+			{ className: "picker__form_text" },
+			_react2.default.createElement("input", { ref: function ref(input) {
+					return _title = input;
+				},
+				type: "text",
+				placeholder: "color name",
+				required: true })
+		),
+		_react2.default.createElement(
+			"label",
+			{ className: "picker__form_color" },
+			_react2.default.createElement("input", { ref: function ref(input) {
+					return _color = input;
+				},
+				type: "color",
+				required: true })
+		),
+		_react2.default.createElement(
+			"label",
+			{ className: "picker__form_number" },
+			_react2.default.createElement("input", { ref: function ref(input) {
+					return _rating = input;
+				},
+				type: "number",
+				required: true }),
+			_react2.default.createElement("input", { type: "submit" })
+		)
 	);
 };
 
@@ -25722,7 +25734,12 @@ var ColorInfo = function ColorInfo(_ref) {
 		_react2.default.createElement(
 			"h2",
 			null,
-			name
+			name,
+			_react2.default.createElement(
+				"span",
+				null,
+				"\u2716"
+			)
 		),
 		_react2.default.createElement("div", { className: "picker__color",
 			style: colorStyles }),

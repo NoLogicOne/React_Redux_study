@@ -15,17 +15,23 @@ const ColorForm = ({sendColor}) => {
 
 	return (
 			<form onSubmit={submit}>
+			<label className="picker__form_text">
 				<input ref={input => _title = input}
 					   type="text"
 					   placeholder="color name"
 					   required/>
+			</label>
+			<label className="picker__form_color">
 				<input ref={input => _color = input}
 					   type="color"
 					   required/>
+			</label>
+			<label className="picker__form_number">
 				<input ref={input => _rating = input}
 					   type="number"
 					   required/>
 				<input type="submit"/>
+			</label>
 			</form>
 		)	
 }
