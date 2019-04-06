@@ -4,13 +4,10 @@ import StarRating from "./StarRating/StarRating.js";
 
 import "./ColorInfo.scss";
 
-const ColorInfo = ({data}) => {
-	const {color = "#00ff00", name = "green", rating} = data;
-	
+const ColorInfo = ({color = "#00ff00", name = "green", rating}) => {
 	let colorStyles = {
 		backgroundColor: color
 	}
-	
 	return (
 		<div className="picker__color-info">
 			<h2>{name}</h2>

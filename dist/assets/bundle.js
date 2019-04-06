@@ -25592,18 +25592,15 @@ __webpack_require__(/*! ./ColorInfo.scss */ "./src/App/ColorsInfo/ColorInfo.scss
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ColorInfo = function ColorInfo(_ref) {
-	var data = _ref.data;
-	var _data$color = data.color,
-	    color = _data$color === undefined ? "#00ff00" : _data$color,
-	    _data$name = data.name,
-	    name = _data$name === undefined ? "green" : _data$name,
-	    rating = data.rating;
-
+	var _ref$color = _ref.color,
+	    color = _ref$color === undefined ? "#00ff00" : _ref$color,
+	    _ref$name = _ref.name,
+	    name = _ref$name === undefined ? "green" : _ref$name,
+	    rating = _ref.rating;
 
 	var colorStyles = {
 		backgroundColor: color
 	};
-
 	return _react2.default.createElement(
 		"div",
 		{ className: "picker__color-info" },
@@ -25687,7 +25684,7 @@ var ColorsInfo = function ColorsInfo() {
 	return _react2.default.createElement(
 		"div",
 		{ className: "picker__colors-info" },
-		_react2.default.createElement(_ColorInfo2.default, { data: testedData })
+		_react2.default.createElement(_ColorInfo2.default, testedData)
 	);
 };
 

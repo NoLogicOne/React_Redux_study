@@ -12,7 +12,7 @@ const ColorsInfo = () => {
 
 	return (
 		<div className="picker__colors-info">
-			<ColorInfo data={testedData}/>
+			<ColorInfo {...testedData}/>
 		</div>
 	)
 }
