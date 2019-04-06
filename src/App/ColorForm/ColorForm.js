@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import "./ColorForm.scss";
+
 const ColorForm = ({sendColor}) => {
 	let _color, _title, _rating;
 	

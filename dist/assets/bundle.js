@@ -86,6 +86,21 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorForm/ColorForm.scss":
+/*!*************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorForm/ColorForm.scss ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  height: 50px;\n  margin: 20px; }\n  input[type=\"color\"] {\n    width: 50px;\n    padding: 0; }\n", ""]);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/ColorInfo.scss":
 /*!**************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/ColorInfo.scss ***!
@@ -25452,6 +25467,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -25489,6 +25506,8 @@ var App = function (_Component) {
 		};
 
 		_this.sendColor = _this.sendColor.bind(_this);
+		_this.onRatingChange = _this.onRatingChange.bind(_this);
+		_this.executeColor = _this.executeColor.bind(_this);
 		return _this;
 	}
 
@@ -25503,10 +25522,44 @@ var App = function (_Component) {
 			var data = this.state.data;
 
 			data = this.addColor(data, name, color, rating);
+			data = this.sortColorsByRating(data);
 
 			this.setState({
 				data: data
 			});
+		}
+	}, {
+		key: "executeColor",
+		value: function executeColor(color, callback) {
+			var data = this.state.data;
+
+
+			return data.map(function (curr) {
+				if (curr.color !== color) {
+					return curr;
+				} else {
+					return callback(curr);
+				}
+			});
+		}
+	}, {
+		key: "sortColorsByRating",
+		value: function sortColorsByRating(data) {
+			return data.sort(function (a, b) {
+				return a.rating > b.rating ? -1 : 1;
+			});
+		}
+	}, {
+		key: "onRatingChange",
+		value: function onRatingChange(color, rating) {
+			var changeRating = function changeRating(data) {
+				return _extends({}, data, { rating: rating });
+			};
+
+			var data = this.executeColor(color, changeRating);
+			data = this.sortColorsByRating(data);
+
+			this.setState({ data: data });
 		}
 	}, {
 		key: "render",
@@ -25517,7 +25570,8 @@ var App = function (_Component) {
 				"div",
 				{ id: "picker__wrapper" },
 				_react2.default.createElement(_ColorForm2.default, { sendColor: this.sendColor }),
-				_react2.default.createElement(_ColorsInfo2.default, { data: data })
+				_react2.default.createElement(_ColorsInfo2.default, { data: data,
+					onRatingChange: this.onRatingChange })
 			);
 		}
 	}]);
@@ -25546,6 +25600,8 @@ Object.defineProperty(exports, "__esModule", {
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ./ColorForm.scss */ "./src/App/ColorForm/ColorForm.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25591,6 +25647,36 @@ exports.default = ColorForm;
 
 /***/ }),
 
+/***/ "./src/App/ColorForm/ColorForm.scss":
+/*!******************************************!*\
+  !*** ./src/App/ColorForm/ColorForm.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/lib/loader.js!./ColorForm.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorForm/ColorForm.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./src/App/ColorsInfo/ColorInfo.js":
 /*!*****************************************!*\
   !*** ./src/App/ColorsInfo/ColorInfo.js ***!
@@ -25622,11 +25708,14 @@ var ColorInfo = function ColorInfo(_ref) {
 	    color = _ref$color === undefined ? "#00ff00" : _ref$color,
 	    _ref$name = _ref.name,
 	    name = _ref$name === undefined ? "green" : _ref$name,
-	    rating = _ref.rating;
+	    rating = _ref.rating,
+	    onRatingChange = _ref.onRatingChange;
+
 
 	var colorStyles = {
 		backgroundColor: color
 	};
+
 	return _react2.default.createElement(
 		"div",
 		{ className: "picker__color-info" },
@@ -25637,7 +25726,9 @@ var ColorInfo = function ColorInfo(_ref) {
 		),
 		_react2.default.createElement("div", { className: "picker__color",
 			style: colorStyles }),
-		_react2.default.createElement(_StarRating2.default, { value: rating })
+		_react2.default.createElement(_StarRating2.default, { value: rating,
+			onRatingChange: onRatingChange,
+			color: color })
 	);
 };
 
@@ -25703,7 +25794,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ColorsInfo = function ColorsInfo(_ref) {
 	var _ref$data = _ref.data,
-	    data = _ref$data === undefined ? [] : _ref$data;
+	    data = _ref$data === undefined ? [] : _ref$data,
+	    onRatingChange = _ref.onRatingChange;
 
 
 	var createCollection = function createCollection() {
@@ -25715,7 +25807,8 @@ var ColorsInfo = function ColorsInfo(_ref) {
 			);
 		} else {
 			return data.map(function (curr, i) {
-				return _react2.default.createElement(_ColorInfo2.default, _extends({ key: i
+				return _react2.default.createElement(_ColorInfo2.default, _extends({ key: i,
+					onRatingChange: onRatingChange
 				}, curr));
 			});
 		}
@@ -25755,9 +25848,19 @@ __webpack_require__(/*! ./Star.scss */ "./src/App/ColorsInfo/StarRating/Star.scs
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Star = function Star(_ref) {
-	var light = _ref.light;
+	var light = _ref.light,
+	    index = _ref.index,
+	    color = _ref.color,
+	    onRatingChange = _ref.onRatingChange;
 
-	return _react2.default.createElement("div", { className: "picker__star" + (light ? " active" : "") });
+	var onClick = function onClick(e) {
+		e.preventDefault();
+
+		onRatingChange(color, index + 1);
+	};
+
+	return _react2.default.createElement("div", { className: "picker__star" + (light ? " active" : ""),
+		onClick: onClick });
 };
 
 exports.default = Star;
@@ -25822,12 +25925,17 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var StarRating = function StarRating(_ref) {
 	var _ref$value = _ref.value,
-	    value = _ref$value === undefined ? 3 : _ref$value;
+	    value = _ref$value === undefined ? 3 : _ref$value,
+	    color = _ref.color,
+	    onRatingChange = _ref.onRatingChange;
 
 
 	var createStars = function createStars() {
 		return [].concat(_toConsumableArray(Array(5))).map(function (curr, i) {
 			return _react2.default.createElement(_Star2.default, { key: i,
+				index: i,
+				onRatingChange: onRatingChange,
+				color: color,
 				light: value > i });
 		});
 	};
