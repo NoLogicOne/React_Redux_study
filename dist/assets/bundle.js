@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".picker__color-info {\n  width: 200px;\n  height: 200px; }\n\n.picker__color {\n  width: 100%;\n  height: 50%;\n  border: 1px solid grey; }\n", ""]);
+exports.push([module.i, ".picker__color-info {\n  width: 200px;\n  height: 200px;\n  text-align: center;\n  display: inline-block;\n  margin: 1em; }\n  .picker__color-info h2 {\n    text-align: left; }\n\n.picker__color {\n  width: 100%;\n  height: 50%;\n  border: 1px solid grey; }\n", ""]);
 
 
 
@@ -25468,13 +25468,13 @@ var _ColorsInfo2 = _interopRequireDefault(_ColorsInfo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import StarRating from "./StarRating/StarRating.js";
-
 
 var App = function (_Component) {
 	_inherits(App, _Component);
@@ -25482,22 +25482,42 @@ var App = function (_Component) {
 	function App(props) {
 		_classCallCheck(this, App);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+		_this.state = {
+			data: _this.props.data
+		};
+
+		_this.sendColor = _this.sendColor.bind(_this);
+		return _this;
 	}
 
 	_createClass(App, [{
+		key: "addColor",
+		value: function addColor(data, name, color, rating) {
+			return [].concat(_toConsumableArray(data), [{ name: name, color: color, rating: rating }]);
+		}
+	}, {
 		key: "sendColor",
-		value: function sendColor(title, color) {
-			console.log("new color!" + title + " - " + color);
+		value: function sendColor(name, color, rating) {
+			var data = this.state.data;
+
+			data = this.addColor(data, name, color, rating);
+
+			this.setState({
+				data: data
+			});
 		}
 	}, {
 		key: "render",
 		value: function render() {
+			var data = this.state.data;
+
 			return _react2.default.createElement(
 				"div",
-				{ id: "colors__wrapper" },
+				{ id: "picker__wrapper" },
 				_react2.default.createElement(_ColorForm2.default, { sendColor: this.sendColor }),
-				_react2.default.createElement(_ColorsInfo2.default, null)
+				_react2.default.createElement(_ColorsInfo2.default, { data: data })
 			);
 		}
 	}]);
@@ -25533,11 +25553,12 @@ var ColorForm = function ColorForm(_ref) {
 	var sendColor = _ref.sendColor;
 
 	var _color = void 0,
-	    _title = void 0;
+	    _title = void 0,
+	    _rating = void 0;
 
 	var submit = function submit(e) {
 		e.preventDefault();
-		sendColor(_title.value, _color.value);
+		sendColor(_title.value, _color.value, _rating.value);
 		_color.value = "#ff0000";
 		_title.value = "";
 		_title.focus();
@@ -25556,6 +25577,11 @@ var ColorForm = function ColorForm(_ref) {
 				return _color = input;
 			},
 			type: "color",
+			required: true }),
+		_react2.default.createElement("input", { ref: function ref(input) {
+				return _rating = input;
+			},
+			type: "number",
 			required: true }),
 		_react2.default.createElement("input", { type: "submit" })
 	);
@@ -25663,6 +25689,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -25673,18 +25701,30 @@ var _ColorInfo2 = _interopRequireDefault(_ColorInfo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ColorsInfo = function ColorsInfo() {
+var ColorsInfo = function ColorsInfo(_ref) {
+	var _ref$data = _ref.data,
+	    data = _ref$data === undefined ? [] : _ref$data;
 
-	var testedData = {
-		color: "#0000ff",
-		name: "blue!",
-		rating: 5
+
+	var createCollection = function createCollection() {
+		if (data.length === 0) {
+			return _react2.default.createElement(
+				"p",
+				null,
+				"you have'nt colors in collection"
+			);
+		} else {
+			return data.map(function (curr, i) {
+				return _react2.default.createElement(_ColorInfo2.default, _extends({ key: i
+				}, curr));
+			});
+		}
 	};
 
 	return _react2.default.createElement(
 		"div",
 		{ className: "picker__colors-info" },
-		_react2.default.createElement(_ColorInfo2.default, testedData)
+		createCollection()
 	);
 };
 
@@ -25819,7 +25859,11 @@ Object.defineProperty(exports, "__esModule", {
 var data = [{
 	name: "blue",
 	color: "#00ff00",
-	rating: 3
+	rating: 4
+}, {
+	name: "green",
+	color: "#0000ff",
+	rating: 2
 }];
 
 exports.default = data;
@@ -25852,7 +25896,7 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _reactDom.render)(_react2.default.createElement(_App2.default, null), document.getElementById('react-container'));
+(0, _reactDom.render)(_react2.default.createElement(_App2.default, { data: _recipes2.default }), document.getElementById('react-container'));
 
 /***/ })
 

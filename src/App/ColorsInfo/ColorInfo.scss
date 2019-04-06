@@ -2,6 +2,12 @@
 	&color-info{
 		width: 200px;
 		height: 200px;
+		text-align: center;
+		display: inline-block;
+		margin: 1em;
+		h2{
+			text-align: left;
+		}
 	}
 	&color{
 		width: 100%;
