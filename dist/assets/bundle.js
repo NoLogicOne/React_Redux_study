@@ -86,6 +86,21 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/ColorInfo.scss":
+/*!**************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/ColorInfo.scss ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".picker__color-info {\n  width: 200px;\n  height: 200px; }\n\n.picker__color {\n  width: 100%;\n  height: 50%;\n  border: 1px solid grey; }\n", ""]);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/StarRating/Star.scss":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/StarRating/Star.scss ***!
@@ -25572,17 +25587,68 @@ var _StarRating = __webpack_require__(/*! ./StarRating/StarRating.js */ "./src/A
 
 var _StarRating2 = _interopRequireDefault(_StarRating);
 
+__webpack_require__(/*! ./ColorInfo.scss */ "./src/App/ColorsInfo/ColorInfo.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ColorInfo = function ColorInfo() {
+var ColorInfo = function ColorInfo(_ref) {
+	var data = _ref.data;
+	var _data$color = data.color,
+	    color = _data$color === undefined ? "#00ff00" : _data$color,
+	    _data$name = data.name,
+	    name = _data$name === undefined ? "green" : _data$name,
+	    rating = data.rating;
+
+
+	var colorStyles = {
+		backgroundColor: color
+	};
+
 	return _react2.default.createElement(
 		"div",
 		{ className: "picker__color-info" },
-		_react2.default.createElement(_StarRating2.default, null)
+		_react2.default.createElement(
+			"h2",
+			null,
+			name
+		),
+		_react2.default.createElement("div", { className: "picker__color",
+			style: colorStyles }),
+		_react2.default.createElement(_StarRating2.default, { value: rating })
 	);
 };
 
 exports.default = ColorInfo;
+
+/***/ }),
+
+/***/ "./src/App/ColorsInfo/ColorInfo.scss":
+/*!*******************************************!*\
+  !*** ./src/App/ColorsInfo/ColorInfo.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/lib/loader.js!./ColorInfo.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/lib/loader.js!./src/App/ColorsInfo/ColorInfo.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -25611,10 +25677,17 @@ var _ColorInfo2 = _interopRequireDefault(_ColorInfo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ColorsInfo = function ColorsInfo() {
+
+	var testedData = {
+		color: "#0000ff",
+		name: "blue!",
+		rating: 5
+	};
+
 	return _react2.default.createElement(
 		"div",
 		{ className: "picker__colors-info" },
-		_react2.default.createElement(_ColorInfo2.default, null)
+		_react2.default.createElement(_ColorInfo2.default, { data: testedData })
 	);
 };
 
@@ -25747,13 +25820,9 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var data = [{
-	"name": "Baked Salmon",
-	"ingredients": [{ "name": "Salmon", "amount": 1, "measurement": "l lb" }, { "name": "Pine Nuts", "amount": 1, "measurement": "cup" }, { "name": "Butter Lettuce", "amount": 2, "measurement": "cups" }, { "name": "Yellow Squash", "amount": 1, "measurement": "med" }, { "name": "Olive Oil", "amount": 0.5, "measurement": "cup" }, { "name": "Garlic", "amount": 3, "measurement": "cloves" }],
-	"steps": ["Preheat the oven to 350 degrees.", "Spread the olive oil around a glass baking dish.", "Add the salmon, garlic, and pine nuts to the dish.", "Bake for 15 minutes.", "Add the yellow squash and put back in the oven for 30 mins.", "Remove from oven and let cool for 15 minutes. Add the lettuce and serve."]
-}, {
-	"name": "Fish Tacos",
-	"ingredients": [{ "name": "Whitefish", "amount": 1, "measurement": "l lb" }, { "name": "Cheese", "amount": 1, "measurement": "cup" }, { "name": "Iceberg Lettuce", "amount": 2, "measurement": "cups" }, { "name": "Tomatoes", "amount": 2, "measurement": "large" }, { "name": "Tortillas", "amount": 3, "measurement": "med" }],
-	"steps": ["Cook the fish on the grill until hot.", "Place the fish on the 3 tortillas.", "Top them with lettuce, tomatoes, and cheese."]
+	name: "blue",
+	color: "#00ff00",
+	rating: 3
 }];
 
 exports.default = data;
