@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  margin: 20px;\n  display: inline-block; }\n  input[type=\"color\"] {\n    margin: 0;\n    border-radius: 50%;\n    cursor: pointer;\n    border: none;\n    background-color: transparent; }\n  input[type=\"text\"] {\n    font-size: 18px; }\n\n.picker__form_color {\n  border-radius: 50%;\n  height: 100%;\n  position: static;\n  margin-bottom: -25px; }\n  .picker__form_color:after {\n    content: \"\\263B\";\n    width: 50px;\n    height: 50px;\n    font-size: 18px; }\n", ""]);
+exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  margin: 20px;\n  display: inline-block; }\n  input[type=\"color\"] {\n    width: 1px;\n    height: 1px;\n    position: absolute;\n    z-index: -1;\n    border: none;\n    background-color: transparent; }\n  input[type=\"text\"] {\n    font-size: 18px; }\n\n.picker__form_color {\n  border-radius: 50%;\n  height: 100%;\n  position: static;\n  font-size: 2.5em;\n  cursor: pointer; }\n  .picker__form_color:focus {\n    outline: 1px solid blue; }\n", ""]);
 
 
 
@@ -25608,9 +25608,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ColorForm = function ColorForm(_ref) {
 	var sendColor = _ref.sendColor;
 
+	// refs for inputs
+	// _visual - its variant of customize input[type=color]
 	var _color = void 0,
 	    _title = void 0,
-	    _rating = void 0;
+	    _rating = void 0,
+	    _visual = void 0;
 
 	var submit = function submit(e) {
 		e.preventDefault();
@@ -25618,6 +25621,13 @@ var ColorForm = function ColorForm(_ref) {
 		_color.value = "#ff0000";
 		_title.value = "";
 		_title.focus();
+	};
+
+	var colorChange = function colorChange(e) {
+		console.log("change!");
+		var color = _color.value;
+
+		_visual.style.color = color;
 	};
 
 	return _react2.default.createElement(
@@ -25640,7 +25650,15 @@ var ColorForm = function ColorForm(_ref) {
 					return _color = input;
 				},
 				type: "color",
-				required: true })
+				onChange: colorChange,
+				required: true }),
+			_react2.default.createElement(
+				"span",
+				{ ref: function ref(span) {
+						return _visual = span;
+					} },
+				"\u263B"
+			)
 		),
 		_react2.default.createElement(
 			"label",
@@ -25649,9 +25667,9 @@ var ColorForm = function ColorForm(_ref) {
 					return _rating = input;
 				},
 				type: "number",
-				required: true }),
-			_react2.default.createElement("input", { type: "submit" })
-		)
+				required: true })
+		),
+		_react2.default.createElement("input", { type: "submit" })
 	);
 };
 

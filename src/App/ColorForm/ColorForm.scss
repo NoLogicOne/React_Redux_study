@@ -1,0 +1,40 @@
+form{
+	padding: 0;
+}
+
+input{
+	// height: 50px;
+	margin: 20px;
+	display: inline-block;
+	&[type="color"]{
+		width: 1px;
+		height: 1px;
+		position: absolute;
+		z-index: -1;
+		border: none;
+		background-color: transparent;
+	}
+	&[type="text"]{
+		font-size: 18px;
+	}
+}
+
+.picker__form_{
+	&color{
+		border-radius: 50%;
+		height: 100%;
+		position: static;
+		font-size: 2.5em;
+		cursor: pointer;
+		&:focus{
+			outline: 1px solid blue;
+		}
+	}
+
+	&text{
+
+	}
+	&number{
+
+	}
+}
