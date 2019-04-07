@@ -6,11 +6,17 @@ import "./ColorInfo.scss";
 
 const ColorInfo = ({color = "#00ff00", 
 					name = "green", 
-					rating, 
-					onRatingChange}) => {
+					rating,
+					onDelete,
+					onRatingChange
+				}) => {
 	
 	let colorStyles = {
 		backgroundColor: color
+	}
+
+	const onClick = (e) => {
+		onDelete(color);
 	}
 
 
@@ -18,7 +24,9 @@ const ColorInfo = ({color = "#00ff00",
 	return (
 		<div className="picker__color-info">
 			<h2>{name}
-				<span>&#10006;</span>
+				<span
+					onClick={onClick}
+				>&#10006;</span>
 			</h2>
 			<div className="picker__color"
 				 style={colorStyles} />

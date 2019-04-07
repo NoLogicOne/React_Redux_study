@@ -25507,6 +25507,7 @@ var App = function (_Component) {
 
 		_this.sendColor = _this.sendColor.bind(_this);
 		_this.onRatingChange = _this.onRatingChange.bind(_this);
+		_this.onDelete = _this.onDelete.bind(_this);
 		_this.executeColor = _this.executeColor.bind(_this);
 		return _this;
 	}
@@ -25540,6 +25541,8 @@ var App = function (_Component) {
 				} else {
 					return callback(curr);
 				}
+			}).filter(function (curr) {
+				return curr !== null;
 			});
 		}
 	}, {
@@ -25562,6 +25565,16 @@ var App = function (_Component) {
 			this.setState({ data: data });
 		}
 	}, {
+		key: "onDelete",
+		value: function onDelete(color) {
+			var remove = function remove(data) {
+				return null;
+			};
+
+			var data = this.executeColor(color, remove);
+			this.setState({ data: data });
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var data = this.state.data;
@@ -25571,6 +25584,7 @@ var App = function (_Component) {
 				{ id: "picker__wrapper" },
 				_react2.default.createElement(_ColorForm2.default, { sendColor: this.sendColor }),
 				_react2.default.createElement(_ColorsInfo2.default, { data: data,
+					onDelete: this.onDelete,
 					onRatingChange: this.onRatingChange })
 			);
 		}
@@ -25741,11 +25755,16 @@ var ColorInfo = function ColorInfo(_ref) {
 	    _ref$name = _ref.name,
 	    name = _ref$name === undefined ? "green" : _ref$name,
 	    rating = _ref.rating,
+	    onDelete = _ref.onDelete,
 	    onRatingChange = _ref.onRatingChange;
 
 
 	var colorStyles = {
 		backgroundColor: color
+	};
+
+	var onClick = function onClick(e) {
+		onDelete(color);
 	};
 
 	return _react2.default.createElement(
@@ -25757,7 +25776,9 @@ var ColorInfo = function ColorInfo(_ref) {
 			name,
 			_react2.default.createElement(
 				"span",
-				null,
+				{
+					onClick: onClick
+				},
 				"\u2716"
 			)
 		),
@@ -25832,7 +25853,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ColorsInfo = function ColorsInfo(_ref) {
 	var _ref$data = _ref.data,
 	    data = _ref$data === undefined ? [] : _ref$data,
-	    onRatingChange = _ref.onRatingChange;
+	    onRatingChange = _ref.onRatingChange,
+	    onDelete = _ref.onDelete;
 
 
 	var createCollection = function createCollection() {
@@ -25845,7 +25867,8 @@ var ColorsInfo = function ColorsInfo(_ref) {
 		} else {
 			return data.map(function (curr, i) {
 				return _react2.default.createElement(_ColorInfo2.default, _extends({ key: i,
-					onRatingChange: onRatingChange
+					onRatingChange: onRatingChange,
+					onDelete: onDelete
 				}, curr));
 			});
 		}

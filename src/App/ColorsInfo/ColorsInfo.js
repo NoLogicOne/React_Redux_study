@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import ColorInfo from "./ColorInfo.js";
 
-const ColorsInfo = ({data = [], onRatingChange}) => {
+const ColorsInfo = ({data = [], onRatingChange, onDelete}) => {
 
 	const createCollection = () => {
 		if(data.length === 0) {
@@ -11,6 +11,7 @@ const ColorsInfo = ({data = [], onRatingChange}) => {
 			return data.map((curr, i) => 
 				(<ColorInfo key={i}
 					        onRatingChange={onRatingChange}
+					        onDelete={onDelete}
 				           {...curr}/>)
 			)
 		}

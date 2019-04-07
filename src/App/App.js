@@ -13,6 +13,7 @@ export default class App extends Component {
 
 		this.sendColor = this.sendColor.bind(this);
 		this.onRatingChange = this.onRatingChange.bind(this);
+		this.onDelete = this.onDelete.bind(this);
 		this.executeColor = this.executeColor.bind(this);
 	}
 
@@ -39,7 +40,7 @@ export default class App extends Component {
 			} else {
 				return callback(curr);
 			}
-		})
+		}).filter(curr => curr !== null);
 	}
 
 	sortColorsByRating(data){
@@ -50,14 +51,21 @@ export default class App extends Component {
 	}
 
 	onRatingChange(color, rating){		
-			const changeRating = (data) => {
-				return {...data, rating};
-			}
+		const changeRating = (data) => {
+			return {...data, rating};
+		}
 
-			let data = this.executeColor(color, changeRating);
-			data = this.sortColorsByRating(data);
-			
-			this.setState({data});
+		let data = this.executeColor(color, changeRating);
+		data = this.sortColorsByRating(data);
+		
+		this.setState({data});
+	}
+
+	onDelete(color){
+		let remove = data => null;
+
+		let data = this.executeColor(color, remove);
+		this.setState({data});
 	}
 
 	render() {
@@ -66,6 +74,7 @@ export default class App extends Component {
 			<div id="picker__wrapper">
 				<ColorForm sendColor = {this.sendColor} />
 				<ColorsInfo data = {data}
+							onDelete={this.onDelete}
 							onRatingChange={this.onRatingChange} />
 			</div>
 		)
