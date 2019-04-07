@@ -40,6 +40,8 @@ const ColorForm = ({sendColor}) => {
 			<label className="picker__form_number">
 				<input ref={input => _rating = input}
 					   type="number"
+					   min="0"
+					   max="5"
 					   required/>
 			</label>
 				<input type="submit"/>

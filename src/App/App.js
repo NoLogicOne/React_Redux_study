@@ -49,15 +49,15 @@ export default class App extends Component {
 		
 	}
 
-	onRatingChange(color, rating){
-		const changeRating = (data) => {
-			return {...data, rating};
-		}
+	onRatingChange(color, rating){		
+			const changeRating = (data) => {
+				return {...data, rating};
+			}
 
-		let data = this.executeColor(color, changeRating);
-		data = this.sortColorsByRating(data);
-
-		this.setState({data});
+			let data = this.executeColor(color, changeRating);
+			data = this.sortColorsByRating(data);
+			
+			this.setState({data});
 	}
 
 	render() {

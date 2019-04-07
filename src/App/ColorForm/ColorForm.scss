@@ -6,16 +6,35 @@ input{
 	// height: 50px;
 	margin: 20px;
 	display: inline-block;
+	padding: 1em;
+	border-top: none;
 	&[type="color"]{
 		width: 1px;
 		height: 1px;
 		position: absolute;
 		z-index: -1;
 		border: none;
+		padding: 0;
 		background-color: transparent;
 	}
 	&[type="text"]{
 		font-size: 18px;
+	}
+	&[type="submit"]{
+		border: none;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		-ms-border-radius: 5px;
+		-o-border-radius: 5px;
+		border-radius: 5px;
+		box-shadow: 5px 5px 5px black;
+		cursor: pointer;
+	}
+	&:invalid{
+		background-color: #ffaaaaaa;
+	}
+	&:valid{
+		background-color: green;
 	}
 }
 
@@ -24,7 +43,7 @@ input{
 		border-radius: 50%;
 		height: 100%;
 		position: static;
-		font-size: 2.5em;
+		font-size: 3em;
 		cursor: pointer;
 		&:focus{
 			outline: 1px solid blue;

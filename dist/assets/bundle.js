@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  margin: 20px;\n  display: inline-block; }\n  input[type=\"color\"] {\n    width: 1px;\n    height: 1px;\n    position: absolute;\n    z-index: -1;\n    border: none;\n    background-color: transparent; }\n  input[type=\"text\"] {\n    font-size: 18px; }\n\n.picker__form_color {\n  border-radius: 50%;\n  height: 100%;\n  position: static;\n  font-size: 2.5em;\n  cursor: pointer; }\n  .picker__form_color:focus {\n    outline: 1px solid blue; }\n", ""]);
+exports.push([module.i, "form {\n  padding: 0; }\n\ninput {\n  margin: 20px;\n  display: inline-block;\n  padding: 1em;\n  border-top: none; }\n  input[type=\"color\"] {\n    width: 1px;\n    height: 1px;\n    position: absolute;\n    z-index: -1;\n    border: none;\n    padding: 0;\n    background-color: transparent; }\n  input[type=\"text\"] {\n    font-size: 18px; }\n  input[type=\"submit\"] {\n    border: none;\n    -webkit-border-radius: 5px;\n    -moz-border-radius: 5px;\n    -ms-border-radius: 5px;\n    -o-border-radius: 5px;\n    border-radius: 5px;\n    box-shadow: 5px 5px 5px black;\n    cursor: pointer; }\n  input:invalid {\n    background-color: #ffaaaaaa; }\n  input:valid {\n    background-color: green; }\n\n.picker__form_color {\n  border-radius: 50%;\n  height: 100%;\n  position: static;\n  font-size: 3em;\n  cursor: pointer; }\n  .picker__form_color:focus {\n    outline: 1px solid blue; }\n", ""]);
 
 
 
@@ -25667,6 +25667,8 @@ var ColorForm = function ColorForm(_ref) {
 					return _rating = input;
 				},
 				type: "number",
+				min: "0",
+				max: "5",
 				required: true })
 		),
 		_react2.default.createElement("input", { type: "submit" })
@@ -25946,6 +25948,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -25967,11 +25971,10 @@ var StarRating = function StarRating(_ref) {
 
 	var createStars = function createStars() {
 		return [].concat(_toConsumableArray(Array(5))).map(function (curr, i) {
-			return _react2.default.createElement(_Star2.default, { key: i,
+			return _react2.default.createElement(_Star2.default, _extends({ key: i,
 				index: i,
-				onRatingChange: onRatingChange,
-				color: color,
-				light: value > i });
+				light: value > i
+			}, { color: color, onRatingChange: onRatingChange }));
 		});
 	};
 

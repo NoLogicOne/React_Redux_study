@@ -5,15 +5,14 @@ import Star from "./Star.js";
 const StarRating = ({value = 3, 
 					 color, 
 					 onRatingChange}) => {
-	
+
 	const createStars = () => {
 		return  [...Array(5)].map( 
 					(curr, i) => (
 						<Star key = {i}
 							  index = {i}
-							  onRatingChange = {onRatingChange}
-							  color = {color} 
-					          light = {value > i}/>
+					          light = {value > i}
+					          {...{color, onRatingChange}}/>
 					)
 				)
 	}
